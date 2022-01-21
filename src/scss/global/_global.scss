@@ -1,0 +1,22 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+body {
+  background-color: $white;
+}
+
+.login-button {
+  border: 0;
+  border-radius: 0;
+  width: 200px;
+  background: #ff686e;
+  border-bottom: 1px solid #ff4e56;
+  color: white;
+  border-radius: 2px;
+  transform: 0.3s;
+  &:hover {
+    background-color: #e04f54;
+    transition: 0.3s;
+  }
+}
