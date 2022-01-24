@@ -1,7 +1,9 @@
+import { MenuItem } from "ManueItem";
 import React from "react";
 import { MdOutlineNavigateNext } from "react-icons/md";
 import { Link } from "react-router-dom";
-const FruitsVegetables = () => {
+
+const FruitsAndVegetableMenue = () => {
   return (
     <div className="ms-5 ps-4 ">
       <div className="container-fluid">
@@ -24,10 +26,25 @@ const FruitsVegetables = () => {
             <MdOutlineNavigateNext />
             <span className="text-black"> Fruits Vegetable</span>
           </h6>
+
+          <div className="row">
+            {MenuItem?.[0].subItems?.map((pd) => (
+              <div className="col-lg-3 col-md-4 col-sm-6 text-center">
+                <Link to={`/grocery${pd.path}`}>
+                  <img className="img-fluid w-75" src={pd.image} alt="" />
+                  <p>
+                    <Link to={pd.path} className="text-secondary">
+                      {pd.title}
+                    </Link>
+                  </p>
+                </Link>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </div>
   );
 };
 
-export default FruitsVegetables;
+export default FruitsAndVegetableMenue;

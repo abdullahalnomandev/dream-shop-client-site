@@ -1,8 +1,8 @@
 import SideNav, { NavIcon, NavItem, NavText } from "@trendmicro/react-sidenav";
 // Be sure to include styles at some point, probably during your bootstraping
 import "@trendmicro/react-sidenav/dist/react-sidenav.css";
+import logo from "assets/images/download.jpg";
 import React from "react";
-import { AiFillHome } from "react-icons/ai";
 import { FcBarChart } from "react-icons/fc";
 
 const MainSidebar = () => {
@@ -16,7 +16,8 @@ const MainSidebar = () => {
       <SideNav.Nav defaultSelected="home">
         <NavItem eventKey="home">
           <NavIcon>
-            <AiFillHome />
+            {/* <AiFillHome /> */}
+            <img className="w-25" src={logo} alt="" />
           </NavIcon>
           <NavText>Winter Collection</NavText>
         </NavItem>

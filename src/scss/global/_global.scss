@@ -20,3 +20,41 @@ body {
     transition: 0.3s;
   }
 }
+
+.add-to-card-button {
+  height: 37px;
+  cursor: pointer;
+  background-color: #fff;
+  border: 1px solid #ebebeb;
+  padding: 6px 0;
+  text-align: center;
+  transition: all ease-in-out 0.15s;
+  color: $buttonColor;
+  font-weight: 600;
+  &:hover {
+    // transform: translateY(-1px);
+    transform: scale(1.06);
+    box-shadow: 0 1px 1px #c3c1c199;
+    border-color: #d0cfcf;
+  }
+}
+.secondary {
+  color: $secondary;
+}
+.added-to-card-button {
+  background-color: $buttonColor;
+  border: none;
+  outline: none;
+  height: 37px;
+  font-weight: 600;
+  border: 1px solid #ebebeb;
+  padding: 6px 0;
+  color: white;
+  button {
+    border: none;
+    color: white;
+    background-color: #ff7378;
+    font-weight: 700;
+    padding: 6px 10px;
+  }
+}

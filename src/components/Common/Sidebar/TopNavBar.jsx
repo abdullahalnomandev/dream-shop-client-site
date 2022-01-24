@@ -1,9 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import { Form, FormControl, Nav, Navbar } from "react-bootstrap";
 import { GrHelp } from "react-icons/gr";
 import MainSidebar from "./MainSidebar";
 
+const content = { en: { help: "Help" }, bn: { help: "সাহায্য" } };
+
 const TopNavBar = () => {
+  const [lang, setLang] = useState("en");
+
   return (
     <section>
       <MainSidebar />
@@ -26,11 +30,13 @@ const TopNavBar = () => {
             <Nav.Link href="#action1" style={{ borderLeft: "1px solid gray" }}>
               <span>
                 {" "}
-                <GrHelp /> <h6 style={{ display: "inline" }}>Help</h6>
+                <GrHelp />{" "}
+                <h6 style={{ display: "inline" }}>{content[lang].help}</h6>
               </span>
             </Nav.Link>
             <Nav.Link href="#action2">
-              <button>Ban</button> <button>Eng</button>
+              <button onClick={() => setLang("bn")}>Ban</button>{" "}
+              <button onClick={() => setLang("en")}>Eng</button>
             </Nav.Link>
             <button className="login-button">Sign In</button>
           </Nav>

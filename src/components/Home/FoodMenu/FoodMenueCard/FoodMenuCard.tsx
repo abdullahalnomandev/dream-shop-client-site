@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { MenuItem } from "Types";
-import banner from "./assets/images/download.jpg";
 
 interface IProps {
   pd: MenuItem;
@@ -9,8 +8,7 @@ interface IProps {
 
 const FoodMenuCard = ({ pd }: IProps) => {
   return (
-    <div className="col-lg-3 col-md-4 col-sm-6 text-center">
-      <img src={banner} alt="" />
+    <div className="col-lg-3 col-md-4 col-sm-6 text-center mb-5">
       <Link to={pd.path}>
         <img className="img-fluid w-75" src={pd.image} alt="" />
         <p>

@@ -8,3 +8,10 @@ export interface MenuItem {
     image: string;
   }[];
 }
+
+export interface IGroceryItem {
+  name: string;
+  quantity: string;
+  price: number;
+  image: string;
+}
