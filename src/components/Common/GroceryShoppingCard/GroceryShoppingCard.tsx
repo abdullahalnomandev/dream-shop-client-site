@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { Card } from "react-bootstrap";
 import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
 import { FaShoppingCart } from "react-icons/fa";
+import { useDispatch } from "react-redux";
+import { addToCart } from "redux/actionCreators/cartActions";
 import { IGroceryItem } from "Types";
 
 interface IProps {
@@ -10,9 +12,10 @@ interface IProps {
 
 const GroceryShoppingCard = ({ pd }: IProps) => {
   const { image, name, price, quantity } = pd;
-
   const [isClick, setIsClick] = useState(true);
   const [count, setCount] = useState(1);
+
+  const dispatch = useDispatch();
 
   return (
     <>
@@ -35,7 +38,7 @@ const GroceryShoppingCard = ({ pd }: IProps) => {
           {isClick ? (
             <button
               className="add-to-card-button "
-              onClick={() => setIsClick(false)}
+              onClick={() => dispatch(addToCart(pd))}
             >
               <FaShoppingCart /> Add to beg
             </button>
