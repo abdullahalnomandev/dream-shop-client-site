@@ -7,8 +7,25 @@
       }
     }
     .price {
-      width: 100px;
       float: right;
+      svg {
+        font-weight: 200;
+        :hover {
+          color: red;
+          cursor: pointer;
+        }
+      }
     }
   }
+  .button-with-quantity {
+    svg {
+      display: inline;
+      font-size: 18px;
+    }
+  }
+}
+p {
+  margin-top: 0;
+  margin-bottom: 0px;
+  padding-bottom: 5px;
 }

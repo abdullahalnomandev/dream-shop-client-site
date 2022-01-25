@@ -1,5 +1,6 @@
+import cartImage from "assets/images/cartImage.webp";
 import shopping from "assets/images/shopping.jpg";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Offcanvas } from "react-bootstrap";
 import { ImPower } from "react-icons/im";
 import { useSelector } from "react-redux";
@@ -8,12 +9,18 @@ import ShoppingCart from "./ShoppingCart";
 
 const ShoppingCartSidebar = () => {
   const [show, setShow] = useState(false);
-  // const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-
+  const [totalPrice, setTotalPrice] = useState(0);
   const { cart } = useSelector((state: IRootState) => state.carts);
-  console.log("grogery Item", cart[0]?.name);
 
+  const total = cart.reduce(
+    (total, pd) => total + pd.price * (pd.count || 1),
+    0
+  );
+
+  useEffect(() => {
+    setTotalPrice(total);
+  }, [total || cart]);
   return (
     <div>
       <button
@@ -44,11 +51,25 @@ const ShoppingCartSidebar = () => {
 
         <Offcanvas.Body>
           <div className="row">
+            {!cart.length && (
+              <div>
+                <img className="img-fluid pt-4 ps-4" src={cartImage} alt="" />
+                <h5 className="text-secondary text-center pt-3">
+                  Your shopping bag is empty. Start shopping
+                </h5>
+              </div>
+            )}
             {cart?.map((pd) => (
               <ShoppingCart pd={pd} />
             ))}
           </div>
         </Offcanvas.Body>
+        {cart.length !== 0 && (
+          <div className="place-order d-flex justify-content-center align-items-center py-1">
+            <h5 className="place">Place Order</h5>
+            <h5>৳ {totalPrice}</h5>
+          </div>
+        )}
       </Offcanvas>
     </div>
   );

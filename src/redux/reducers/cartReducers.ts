@@ -19,6 +19,16 @@ export const cartReducer = (
       return { ...state, cart: [...state.cart, action.payLoad] };
     }
 
+    case ActionType.REMOVE_FROM_CART: {
+      const id = action.payLoad;
+      const remainingCart = state.cart.filter((pd) => pd.name !== id);
+      return { ...state, cart: remainingCart };
+    }
+
+    case ActionType.CLEAR_CART: {
+      return { ...state };
+    }
+
     default: {
       return state;
     }

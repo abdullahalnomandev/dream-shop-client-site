@@ -26,3 +26,19 @@
   padding: 6px 11px;
   background: #ddd;
 }
+.place-order {
+  margin: 10px 10px;
+
+  .place,
+  h5 {
+    background-color: #ff8182;
+    padding: 7px 0px;
+    width: 100%;
+    padding: 10px 5px;
+    color: white;
+  }
+  h5 {
+    background-color: #e04f54;
+    width: 50%;
+  }
+}
