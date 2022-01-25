@@ -1,0 +1,14 @@
+.grocery-section {
+  border-bottom: 1px solid #ddd;
+  .image-with-groceryName {
+    .image {
+      img {
+        width: 60px;
+      }
+    }
+    .price {
+      width: 100px;
+      float: right;
+    }
+  }
+}

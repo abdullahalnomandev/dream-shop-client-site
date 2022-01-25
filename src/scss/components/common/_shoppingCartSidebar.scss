@@ -1,0 +1,28 @@
+.shopping-cart-header {
+  img {
+    width: 50px;
+  }
+  h5 {
+    display: inline;
+    font-size: 20px;
+    font-weight: 700;
+    color: gray;
+  }
+  button {
+    outline: none;
+    border: 1px solid black;
+    background-color: white;
+    padding: 1px 10px;
+    color: red;
+    font-size: 17px;
+    font-weight: 500;
+    margin-right: 5%;
+    border-radius: 2px;
+  }
+}
+.express {
+  font-size: 15px;
+  font-weight: 700;
+  padding: 6px 11px;
+  background: #ddd;
+}
