@@ -12,3 +12,7 @@ export const removeFromCart = (payLoad: String) => {
 export const clearCart = () => {
   return { type: ActionType.CLEAR_CART };
 };
+
+export const restartCart = () => {
+  return { type: ActionType.RESTART_FROM_CART };
+};

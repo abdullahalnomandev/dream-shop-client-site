@@ -25,7 +25,7 @@ export const cartReducer = (
       return { ...state, cart: remainingCart };
     }
 
-    case ActionType.CLEAR_CART: {
+    case ActionType.RESTART_FROM_CART: {
       return { ...state };
     }
 

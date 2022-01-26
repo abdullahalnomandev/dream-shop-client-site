@@ -14,5 +14,5 @@ export interface IGroceryItem {
   quantity: string;
   price: number;
   image: string;
-  count?: number;
+  count: number;
 }

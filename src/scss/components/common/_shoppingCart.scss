@@ -18,9 +18,12 @@
     }
   }
   .button-with-quantity {
+    padding-right: 10px;
     svg {
       display: inline;
-      font-size: 18px;
+      font-size: 20px;
+      font-weight: 900;
+      cursor: pointer;
     }
   }
 }

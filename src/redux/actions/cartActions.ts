@@ -14,7 +14,11 @@ interface removeFromCartAction {
 interface clearCartFromAction {
   type: ActionType.CLEAR_CART;
 }
+interface restartFromCart {
+  type: ActionType.RESTART_FROM_CART;
+}
 export type cartAction =
   | addToCartAction
   | removeFromCartAction
-  | clearCartFromAction;
+  | clearCartFromAction
+  | restartFromCart;

@@ -1,0 +1,30 @@
+.grocery-shopping-card {
+  position: relative;
+  transition: 0.4s;
+
+  .grocery_body {
+    h1 {
+      color: white;
+      padding-top: 30%;
+      padding-bottom: 15%;
+    }
+    position: absolute;
+    top: 60%;
+    left: 25%;
+    visibility: hidden;
+  }
+  .grocery_card {
+    position: absolute;
+    top: 0;
+  }
+}
+.grocery-shopping-card:hover .grocery_body {
+  visibility: visible;
+  background: rgba(0, 0, 0, 0.479);
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  // bottom: 10;
+  transition: 0.4s;
+}
