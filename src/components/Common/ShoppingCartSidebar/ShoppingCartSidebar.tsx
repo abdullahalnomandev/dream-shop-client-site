@@ -5,6 +5,7 @@ import { Offcanvas } from "react-bootstrap";
 import { AiFillShopping } from "react-icons/ai";
 import { ImPower } from "react-icons/im";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import { IRootState } from "redux/reducers/reducers";
 import ShoppingCart from "./ShoppingCart";
 
@@ -73,10 +74,15 @@ const ShoppingCartSidebar = () => {
           </div>
         </Offcanvas.Body>
         {cart.length !== 0 && (
-          <div className="place-order d-flex justify-content-center align-items-center py-1">
-            <h5 className="place">Place Order</h5>
-            <h5>৳ {totalPrice}</h5>
-          </div>
+          <Link to="account/login">
+            <div
+              onClick={() => setShow(false)}
+              className="place-order d-flex justify-content-center align-items-center py-1"
+            >
+              <h5 className="place">Place Order</h5>
+              <h5>৳ {totalPrice}</h5>
+            </div>
+          </Link>
         )}
       </Offcanvas>
     </div>

@@ -3,9 +3,44 @@
   transition: 0.4s;
 
   .grocery_body {
-    h1 {
+    h4 {
       color: white;
-      padding-top: 30%;
+    }
+    .details {
+      font-size: 16px;
+      padding: 3px 18px;
+      border: navajowhite;
+      outline: navajowhite;
+      background: #ffffffbf;
+      border-radius: 10px;
+      margin-top: 8%;
+      svg {
+        color: black;
+        font-size: 13px;
+        margin-top: 10px;
+      }
+    }
+    svg {
+      color: white;
+      font-size: 40px;
+      font-weight: 800;
+      transition: 0.3s;
+      margin-bottom: 14px;
+      cursor: pointer;
+      :hover {
+        color: #fdd670;
+        transition: 0.3s;
+      }
+    }
+    span {
+      color: #fdd670;
+      font-size: 40px;
+      padding: 9px 13px;
+      margin-top: 20px;
+    }
+    h2 {
+      color: white;
+      padding-top: 10%;
       padding-bottom: 15%;
     }
     position: absolute;
