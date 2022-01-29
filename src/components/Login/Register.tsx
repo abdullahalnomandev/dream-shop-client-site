@@ -1,97 +1,131 @@
-import useFirebase from "hooks/useFirebase";
-import { useState } from "react";
-import { Button, Form, Spinner } from "react-bootstrap";
+import { Button, Form, Input } from "antd";
+import useAuth from "hooks/useAuth";
+import React from "react";
+import { Spinner } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
-interface IUser {
-  name: string;
-  email: string;
-  password: string;
-  password2: string;
-}
-interface ITarget {
-  target: {
-    name: string;
-    value: string;
-  };
-}
-
 const Register = () => {
-  const { registerUser, isLoading } = useFirebase();
-  const [loginData, setLoginData] = useState<IUser>({} as IUser);
-  const handleChange = (e: ITarget) => {
-    setLoginData({ ...loginData, [e.target.name]: e.target.value });
+  const { registerUser, isLoading, error, user } = useAuth();
+  const [form] = Form.useForm();
+  const onFinish = (values: any) => {
+    console.log("Received values of form: ", values);
+    registerUser(values.email, values.password);
   };
 
-  const handleLoginSubmit = (e: any) => {
-    if (loginData.password !== loginData.password2) {
-      alert('Password didn"t match');
-      return;
-    }
-
-    console.log(loginData);
-    // registerUser(loginData.email, loginData.password);
-    registerUser(loginData.email, loginData.password);
-    e.preventDefault();
-    e.target.reset();
-  };
   return (
-    <div className="container">
-      <div className="w-50 mt-5 m-auto">
-        {!isLoading && (
-          <Form onSubmit={handleLoginSubmit} className="pb-3">
-            <Form.Group className="mb-3" controlId="formBasicEmail">
-              <Form.Group className="mb-3" controlId="formBasicPassword">
-                <Form.Label>Enter Name</Form.Label>
-                <Form.Control
-                  type="name"
-                  name="name"
-                  placeholder="Name"
-                  onChange={handleChange}
-                />
-              </Form.Group>
-              <Form.Label>Email address</Form.Label>
-              <Form.Control
-                type="email"
-                name="email"
-                onChange={handleChange}
-                placeholder="Enter email"
-              />{" "}
-            </Form.Group>
+    <section className="container registerForm">
+      <div className=" mt-5 ">
+        <Form
+          form={form}
+          onFinish={onFinish}
+          style={{
+            border: "1px solid #dbdbdb ",
+            padding: "30px",
+            boxShadow: "5px 10px 26px 21px #ddd",
+            borderRadius: "7px",
+          }}
+        >
+          <Form.Item
+            name="name"
+            label="Name"
+            rules={[
+              {
+                required: true,
+                message: "Please input your name",
+              },
+            ]}
+          >
+            <Input />
+          </Form.Item>
+          <Form.Item
+            name="email"
+            label="e-mail"
+            rules={[
+              {
+                type: "email",
+                message: "The input is not valid E-mail!",
+              },
+              {
+                required: true,
+                message: "Please input your E-mail!",
+              },
+            ]}
+          >
+            <Input />
+          </Form.Item>
 
-            <Form.Group className="mb-3" controlId="formBasicPassword">
-              <Form.Label>Password</Form.Label>
-              <Form.Control
-                type="password"
-                name="password"
-                placeholder="Password"
-                onChange={handleChange}
-              />
-            </Form.Group>
+          <Form.Item
+            name="password"
+            label="Password"
+            rules={[
+              {
+                required: true,
+                message: "Please input your password!",
+              },
+            ]}
+            hasFeedback
+          >
+            <Input.Password />
+          </Form.Item>
 
-            <Form.Group className="mb-3" controlId="formBasicPassword">
-              <Form.Label>Confirm Password</Form.Label>
-              <Form.Control
-                type="password"
-                name="password2"
-                placeholder="confirm password"
-                onChange={handleChange}
-              />
-            </Form.Group>
+          <Form.Item
+            name="confirm"
+            label="Confirm Password"
+            dependencies={["password"]}
+            hasFeedback
+            rules={[
+              {
+                required: true,
+                message: "Please confirm your password!",
+              },
+              ({ getFieldValue }) => ({
+                validator(_, value) {
+                  if (!value || getFieldValue("password") === value) {
+                    return Promise.resolve();
+                  }
 
-            <Form.Group className="mb-3" controlId="formBasicCheckbox">
-              <Form.Check type="checkbox" label="Check me out" />
-            </Form.Group>
+                  return Promise.reject(
+                    new Error(
+                      "The two passwords that you entered do not match!"
+                    )
+                  );
+                },
+              }),
+            ]}
+          >
+            <Input.Password />
+          </Form.Item>
 
-            <Button variant="primary" type="submit">
-              Login
+          <Form.Item>
+            <Button
+              type="primary"
+              htmlType="submit"
+              style={{
+                backgroundColor: "#eb484b",
+                color: "white",
+                width: "100%",
+              }}
+            >
+              Register
             </Button>
-          </Form>
-        )}
+          </Form.Item>
+          {error && (
+            <div className="alert alert-danger" role="alert">
+              {`(${error}`}
+            </div>
+          )}
+          {user.email && (
+            <div className="alert alert-success" role="alert">
+              Check your email and click on the link to verify.
+            </div>
+          )}
+        </Form>
         {isLoading && <Spinner animation="border" variant="primary" />}
-        <Link to="/account/login">Already Registered ? Please Login</Link>
+        <div className="mt-4 pb-4 text-center">
+          <Link to="/account/login">Already Registered ? Please Login</Link>
+        </div>
       </div>
-    </div>
+    </section>
   );
 };
 

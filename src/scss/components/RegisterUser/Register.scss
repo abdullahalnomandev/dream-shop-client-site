@@ -1,0 +1,11 @@
+.registerForm {
+  max-width: 600px;
+  margin: auto;
+  @media screen and (max-width: 650px) {
+    max-width: 350px;
+    margin-left: 100px;
+  }
+}
+.ant-modal-footer {
+  display: none;
+}

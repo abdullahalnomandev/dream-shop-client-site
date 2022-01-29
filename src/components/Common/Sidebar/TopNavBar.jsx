@@ -1,3 +1,4 @@
+import useAuth from "hooks/useAuth";
 import React, { useState } from "react";
 import { Form, FormControl, Nav, Navbar } from "react-bootstrap";
 import { GrHelp } from "react-icons/gr";
@@ -6,6 +7,8 @@ import MainSidebar from "./MainSidebar";
 const content = { en: { help: "Help" }, bn: { help: "সাহায্য" } };
 
 const TopNavBar = () => {
+  const { user, logOut } = useAuth();
+  console.log("userFromContex", user.emailVerified);
   const [lang, setLang] = useState("en");
 
   return (
@@ -38,7 +41,13 @@ const TopNavBar = () => {
               <button onClick={() => setLang("bn")}>Ban</button>{" "}
               <button onClick={() => setLang("en")}>Eng</button>
             </Nav.Link>
-            <button className="login-button">Sign In</button>
+            {user.emailVerified ? (
+              <button className="login-button" onClick={logOut}>
+                Log Out
+              </button>
+            ) : (
+              <button className="login-button">Sign In</button>
+            )}
           </Nav>
         </Navbar>
       </div>

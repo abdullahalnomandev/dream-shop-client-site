@@ -15,7 +15,6 @@ const ShoppingCartSidebar = () => {
   const handleClose = () => setShow(false);
   const [totalPrice, setTotalPrice] = useState(0);
   const { cart } = useSelector((state: IRootState) => state.carts);
-  console.log("cart", cart);
 
   const total = cart.reduce(
     (total, pd) => total + pd.price * (pd.count || 1),
@@ -74,7 +73,7 @@ const ShoppingCartSidebar = () => {
           </div>
         </Offcanvas.Body>
         {cart.length !== 0 && (
-          <Link to="account/login">
+          <Link to="/checkout">
             <div
               onClick={() => setShow(false)}
               className="place-order d-flex justify-content-center align-items-center py-1"
