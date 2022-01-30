@@ -42,6 +42,7 @@ const App = () => {
             path="/checkout"
             element={
               <PrivateRoute>
+                {" "}
                 <Checkout />{" "}
               </PrivateRoute>
             }

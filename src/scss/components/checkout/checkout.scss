@@ -1,0 +1,50 @@
+.checkout {
+  .add_address_item,
+  .raver_bag {
+    margin-right: 35%;
+
+    .delivery_address {
+      border-bottom: 1px solid rgb(100, 96, 96);
+      padding: 8px 8px;
+      margin-bottom: 4%;
+      background: #f8f8f8;
+    }
+    .button {
+      padding: 0px 10%;
+    }
+
+    border: 1px solid #d6cdcd;
+    padding-bottom: 20px;
+    margin-top: 4%;
+    color: #464242b0;
+
+    h4 {
+      font-size: 16px;
+    }
+    svg {
+      font-size: 20px;
+      margin-right: 13px;
+    }
+  }
+  .raver_bag {
+    border: 1px solid #d6cdcd;
+    cursor: pointer;
+  }
+  .amount,
+  .process_checkout {
+    margin-right: 35%;
+
+    border-radius: 5px;
+    cursor: pointer;
+
+    .process {
+      background: #ff686e;
+    }
+    h4 {
+      background: #e04f54;
+      padding: 6px 5px;
+      color: white;
+      font-size: 24px;
+    }
+  }
+}
