@@ -2,7 +2,7 @@ import useAuth from "hooks/useAuth";
 import React, { useState } from "react";
 import { Form, FormControl, Nav, Navbar } from "react-bootstrap";
 import { GrHelp } from "react-icons/gr";
-import MainSidebar from "./MainSidebar";
+import { Link } from "react-router-dom";
 
 const content = { en: { help: "Help" }, bn: { help: "সাহায্য" } };
 
@@ -12,11 +12,10 @@ const TopNavBar = () => {
   const [lang, setLang] = useState("en");
 
   return (
-    <section>
-      <MainSidebar />
-      <div className="ms-5 ps-4 top-main  ">
+    <section className="container-fluid top-main">
+      <div className="ms-5 ps-4   row">
         <Navbar expand="lg">
-          <Navbar.Brand href="/">
+          <Navbar.Brand as={Link} to="/">
             <h5>
               DREAM <span className="text-secondary">Shop</span>
             </h5>

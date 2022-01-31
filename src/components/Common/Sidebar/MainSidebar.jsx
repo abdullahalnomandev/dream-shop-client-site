@@ -1,40 +1,101 @@
-import SideNav, { NavIcon, NavItem, NavText } from "@trendmicro/react-sidenav";
-// Be sure to include styles at some point, probably during your bootstraping
-import "@trendmicro/react-sidenav/dist/react-sidenav.css";
-import logo from "assets/images/download.jpg";
-import React from "react";
-import { FcBarChart } from "react-icons/fc";
+import { NotificationOutlined } from "@ant-design/icons";
+import { Layout, Menu } from "antd";
+import { MdFoodBank } from "react-icons/md";
+import { Link, useNavigate } from "react-router-dom";
+
+const { SubMenu } = Menu;
+const { Sider } = Layout;
 
 const MainSidebar = () => {
+  let navigate = useNavigate();
+
+  const routeHandler = (route) => {
+    navigate(route);
+  };
+
   return (
-    <SideNav
-      onSelect={(selected) => {
-        // Add your code here
-      }}
-    >
-      <SideNav.Toggle />
-      <SideNav.Nav defaultSelected="home">
-        <NavItem eventKey="home">
-          <NavIcon>
-            {/* <AiFillHome /> */}
-            <img className="w-25" src={logo} alt="" />
-          </NavIcon>
-          <NavText>Winter Collection</NavText>
-        </NavItem>
-        <NavItem eventKey="charts">
-          <NavIcon>
-            <FcBarChart />
-          </NavIcon>
-          <NavText>Charts</NavText>
-          <NavItem eventKey="charts/linechart">
-            <NavText>Line Chart</NavText>
-          </NavItem>
-          <NavItem eventKey="charts/barchart">
-            <NavText>Bar Chart</NavText>
-          </NavItem>
-        </NavItem>
-      </SideNav.Nav>
-    </SideNav>
+    <div>
+      <Layout>
+        <Sider className="site-layout-background" width={200}>
+          <Menu
+            mode="inline"
+            defaultSelectedKeys={["1"]}
+            defaultOpenKeys={["sub1"]}
+            style={{ height: "100%" }}
+          >
+            <SubMenu
+              key="sub2"
+              icon={<MdFoodBank style={{ fontSize: "30px" }} />}
+              title="Food"
+              onTitleClick={() => routeHandler("/grocery")}
+            >
+              <SubMenu
+                title="Fruits & vegetable "
+                onTitleClick={() => routeHandler("/fruits-vegetables")}
+              >
+                <Menu.Item>
+                  <Link to="/grocery/fresh-fruit"> Fresh Food</Link>
+                </Menu.Item>
+                <Menu.Item key="2">
+                  <Link to="/grocery/fresh-vegetable"> Fresh Vegetable</Link>
+                </Menu.Item>
+              </SubMenu>
+
+              <SubMenu
+                title="Meat & Fish "
+                onTitleClick={() => routeHandler("/meat-fish")}
+              >
+                <Menu.Item key="3">
+                  <Link to="/grocery/meat"> Meet</Link>
+                </Menu.Item>
+                <Menu.Item key="4">
+                  <Link to="/grocery/frozen-fish"> Frozen Fish</Link>
+                </Menu.Item>
+                <Menu.Item key="5">
+                  Dried Fish
+                  <Link to="/grocery/dried-fish"> Dried Fish</Link>
+                </Menu.Item>
+                <Menu.Item key="6">
+                  <Link to="/grocery/tofu-meat-alternatives">
+                    {" "}
+                    Tofu & Meat Alternatives
+                  </Link>
+                </Menu.Item>
+              </SubMenu>
+
+              <SubMenu
+                title="Beverages "
+                onTitleClick={() => routeHandler("/beverages")}
+              >
+                <Menu.Item key="7">
+                  <Link to="/grocery/tea-coffee"> Tea</Link>
+                </Menu.Item>
+
+                <Menu.Item key="8">
+                  <Link to="/grocery/coffee-2"> coffee</Link>
+                </Menu.Item>
+                <Menu.Item key="9">
+                  <Link to="/grocery/juice"> Juice</Link>
+                </Menu.Item>
+                <Menu.Item key="10">
+                  <Link to="/grocery/soft-drinks"> Soft Drink</Link>
+                </Menu.Item>
+              </SubMenu>
+            </SubMenu>
+            <SubMenu
+              key="sub3"
+              icon={<NotificationOutlined />}
+              title="subnav 3"
+            >
+              <Menu.Item key="12">option9</Menu.Item>
+              <Menu.Item key="13">option10</Menu.Item>
+              <Menu.Item key="14">option11</Menu.Item>
+              <Menu.Item key="15">option12</Menu.Item>
+            </SubMenu>
+          </Menu>
+        </Sider>
+      </Layout>
+    </div>
   );
 };
 

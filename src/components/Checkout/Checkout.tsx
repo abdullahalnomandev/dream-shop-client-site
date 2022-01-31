@@ -1,10 +1,27 @@
-import { Button } from "antd";
-import React from "react";
+import { Switch } from "antd";
+import React, { useState } from "react";
 import { AiOutlineInfoCircle } from "react-icons/ai";
-import { GrAdd } from "react-icons/gr";
 import { RiMapPinLine, RiShoppingBag2Fill } from "react-icons/ri";
+import { useSelector } from "react-redux";
+import { IRootState } from "redux/reducers/reducers";
+import CheckoutModel from "./CheckoutModel";
 
 const Checkout = () => {
+  const { cart } = useSelector((state: IRootState) => state.carts);
+
+  const total = cart.reduce(
+    (total, pd) => total + pd.price * (pd.count || 1),
+    0
+  );
+  const [switchChecked, setSwitchChecked] = useState(true);
+  const [isDisable, setIsDisable] = useState<boolean | undefined>(false);
+
+  const onChange = (checked: any) => {
+    setSwitchChecked(checked);
+  };
+
+  console.log("switchChecked", switchChecked);
+
   return (
     <div className="container checkout">
       <div className="add_address_item">
@@ -13,12 +30,14 @@ const Checkout = () => {
           <h4>Select a Delivery Address</h4>
         </div>
         <div className="button ">
-          <Button style={{ width: "100%" }}>
-            <GrAdd /> Add Address
-          </Button>
+          <CheckoutModel
+            switchChecked={switchChecked}
+            setIsDisable={setIsDisable}
+            isDisable={isDisable}
+          />
         </div>
       </div>
-      <div className="raver_bag py-3 px-2">
+      <div className="raver_bag py-3 px-2 d-flex justify-content-between">
         <div>
           <RiShoppingBag2Fill />{" "}
           <span className="text-primary ">
@@ -26,14 +45,35 @@ const Checkout = () => {
             Add reusable bags? <AiOutlineInfoCircle />
           </span>
         </div>
+        <div>
+          <h5
+            style={{ display: "inline" }}
+            className={switchChecked ? "text-secondary px-2" : "d-none"}
+          >
+            ৳7
+          </h5>{" "}
+          <Switch defaultChecked onChange={onChange} />
+        </div>
       </div>
       <div className="amount d-flex justify-content-between text-secondary">
         <p>Payment options available on the next page</p>
         <p>৳9 Delivery charge included</p>
       </div>
       <div className="amount d-flex justify-content-end align-items-center">
-        <h4 className="process">Process</h4>
-        <h4>৳9444</h4>
+        <button disabled={!isDisable}>
+          <span
+            className="process"
+            style={{ background: isDisable ? "" : "#ddd" }}
+          >
+            Process
+          </span>
+          <span
+            className="process2"
+            style={{ background: isDisable ? "" : "#ddd" }}
+          >
+            ৳ {switchChecked ? `${total + 7}` : `${total}`}
+          </span>
+        </button>
       </div>
     </div>
   );
