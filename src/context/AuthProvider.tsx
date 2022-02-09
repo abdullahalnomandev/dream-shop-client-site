@@ -13,11 +13,9 @@ interface IProps {
 }
 
 export const AuthContext = createContext({} as IProps);
-
 export interface AuxProps {
   children: React.ReactNode;
 }
-
 const AuthProvider = ({ children }: AuxProps) => {
   const allContext: IProps = useFirebase();
   return (

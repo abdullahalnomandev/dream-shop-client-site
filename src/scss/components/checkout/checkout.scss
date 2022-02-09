@@ -8,6 +8,7 @@
       padding: 8px 8px;
       margin-bottom: 4%;
       background: #f8f8f8;
+   
     }
     .button {
       padding: 0px 10%;
@@ -17,6 +18,7 @@
     padding-bottom: 20px;
     margin-top: 4%;
     color: #464242b0;
+    margin-left: 10%;
 
     h4 {
       font-size: 16px;
@@ -31,15 +33,20 @@
   }
   .amount,
   .process_checkout {
+
     button {
       outline: none;
       border: none;
+   
     }
     margin-right: 35%;
+    margin-left: 10%;
     border-radius: 5px;
 
     .process {
       background: #ff686e;
+      box-shadow: 10px 10px 10px gray;
+      
     }
     .process2 {
       background: #e04f54;
@@ -49,6 +56,10 @@
       padding: 6px 5px;
       color: white;
       font-size: 24px;
+
     }
+  
   }
 }
+
+

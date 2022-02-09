@@ -1,12 +1,17 @@
 import { Button, Form, Input } from "antd";
+import useAuth from "hooks/useAuth";
 import React, { useState } from "react";
 import { Modal } from "react-bootstrap";
 import { VscAdd } from "react-icons/vsc";
+import { useSelector } from "react-redux";
+import { IRootState } from "redux/reducers/reducers";
+import BookingServices from "services/Booking/BookingServices";
 
 interface IProps {
   switchChecked: boolean | any;
   setIsDisable: React.Dispatch<React.SetStateAction<boolean | undefined>>;
   isDisable: boolean | undefined;
+  total:number
 }
 const layout = {
   labelCol: { span: 8 },
@@ -26,19 +31,31 @@ const validateMessages = {
     range: "${label} must be between ${min} and ${max}",
   },
 };
-const CheckoutModel: React.FC<IProps> = ({
-  switchChecked,
-  setIsDisable,
-  isDisable,
-}) => {
+const CheckoutModel: React.FC<IProps> = ({switchChecked, setIsDisable, isDisable, total}) => {
+  const { cart } = useSelector((state: IRootState) => state.carts);
+
   console.log(switchChecked);
 
-  const [show, setShow] = useState(false);
+  const {user}=useAuth()
 
+  const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
   const onFinish = (values: any) => {
+    values.userName=user.displayName
+    values.email=user.email
+    values.total= total
+    values.bag=switchChecked
+    values.cart=cart
     console.log(values);
+    
+    BookingServices.postBooking(values)
+    .then((res)=>{
+      if(res){
+        alert('Response success')
+      }
+    })
     setShow(false);
     setIsDisable(true);
   };
@@ -65,14 +82,14 @@ const CheckoutModel: React.FC<IProps> = ({
               validateMessages={validateMessages}
             >
               <Form.Item
-                name={["user", "address"]}
+                name={[ "address"]}
                 label=" Street Address"
                 rules={[{ required: true }]}
               >
                 <Input.TextArea placeholder="e.g House No 73,Road 14,Block F, Bashundhara R/A, Dhaka-1216" />
               </Form.Item>
               <Form.Item
-                name={["user", "area"]}
+                name={["area"]}
                 label="Area"
                 rules={[{ required: true }]}
               >
@@ -96,14 +113,14 @@ const CheckoutModel: React.FC<IProps> = ({
                 </select>
               </Form.Item>
               <Form.Item
-                name={["user", "email"]}
+                name={["email"]}
                 label="Email"
                 rules={[{ required: true, type: "email" }]}
               >
                 <Input />
               </Form.Item>
               <Form.Item
-                name={["user", "phone"]}
+                name={[ "phone"]}
                 label="Phone"
                 rules={[{ required: true }]}
               >

@@ -1,5 +1,4 @@
 import { Button, Checkbox, Form, Input } from "antd";
-import "antd/dist/antd.min.css";
 import google from "assets/images/google.png";
 import useAuth from "hooks/useAuth";
 import { useEffect, useState } from "react";

@@ -10,10 +10,7 @@ const initialState = {
   cart: [],
 };
 
-export const cartReducer = (
-  state: state = initialState,
-  action: cartAction
-) => {
+export const cartReducer = (state: state = initialState,action: cartAction) => {
   switch (action.type) {
     case ActionType.ADD_TO_CART: {
       return { ...state, cart: [...state.cart, action.payLoad] };

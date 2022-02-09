@@ -23,7 +23,7 @@ const Checkout = () => {
   console.log("switchChecked", switchChecked);
 
   return (
-    <div className="container checkout">
+    <div className=" checkout">
       <div className="add_address_item">
         <div className="delivery_address d-flex">
           <RiMapPinLine />
@@ -34,6 +34,7 @@ const Checkout = () => {
             switchChecked={switchChecked}
             setIsDisable={setIsDisable}
             isDisable={isDisable}
+            total = {total}
           />
         </div>
       </div>
@@ -59,8 +60,8 @@ const Checkout = () => {
         <p>Payment options available on the next page</p>
         <p>৳9 Delivery charge included</p>
       </div>
-      <div className="amount d-flex justify-content-end align-items-center">
-        <button disabled={!isDisable}>
+      <div  className="amount d-flex justify-content-end align-items-center">
+        <button disabled={!isDisable} className='process_button'>
           <span
             className="process"
             style={{ background: isDisable ? "" : "#ddd" }}

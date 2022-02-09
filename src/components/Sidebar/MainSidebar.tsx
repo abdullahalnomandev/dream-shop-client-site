@@ -1,7 +1,7 @@
-import { NotificationOutlined } from "@ant-design/icons";
 import { Layout, Menu } from "antd";
 import { MdFoodBank } from "react-icons/md";
 import { Link, useNavigate } from "react-router-dom";
+import AdminSidebar from "./AdminSidebar";
 
 const { SubMenu } = Menu;
 const { Sider } = Layout;
@@ -9,7 +9,7 @@ const { Sider } = Layout;
 const MainSidebar = () => {
   let navigate = useNavigate();
 
-  const routeHandler = (route) => {
+  const routeHandler = (route:string) => {
     navigate(route);
   };
 
@@ -22,7 +22,11 @@ const MainSidebar = () => {
             defaultSelectedKeys={["1"]}
             defaultOpenKeys={["sub1"]}
             style={{ height: "100%" }}
-          >
+          >            
+          <AdminSidebar />
+            <Menu.Item key="12">Winter Collection</Menu.Item>
+            <Menu.Item key="18">Popular</Menu.Item>
+            <Menu.Item key="19">Flash Sales</Menu.Item>
             <SubMenu
               key="sub2"
               icon={<MdFoodBank style={{ fontSize: "30px" }} />}
@@ -37,14 +41,10 @@ const MainSidebar = () => {
                   <Link to="/grocery/fresh-fruit"> Fresh Food</Link>
                 </Menu.Item>
                 <Menu.Item key="2">
-                  <Link to="/grocery/fresh-vegetable"> Fresh Vegetable</Link>
+                  <Link to="/"> Fresh Vegetable</Link>
                 </Menu.Item>
               </SubMenu>
-
-              <SubMenu
-                title="Meat & Fish "
-                onTitleClick={() => routeHandler("/meat-fish")}
-              >
+              <SubMenu title="Meat & Fish "   onTitleClick={() => routeHandler("/meat-fish")} >
                 <Menu.Item key="3">
                   <Link to="/grocery/meat"> Meet</Link>
                 </Menu.Item>
@@ -57,20 +57,14 @@ const MainSidebar = () => {
                 </Menu.Item>
                 <Menu.Item key="6">
                   <Link to="/grocery/tofu-meat-alternatives">
-                    {" "}
                     Tofu & Meat Alternatives
                   </Link>
                 </Menu.Item>
               </SubMenu>
-
-              <SubMenu
-                title="Beverages "
-                onTitleClick={() => routeHandler("/beverages")}
-              >
+              <SubMenu title="Beverages"  onTitleClick={() => routeHandler("/beverages")}>
                 <Menu.Item key="7">
                   <Link to="/grocery/tea-coffee"> Tea</Link>
                 </Menu.Item>
-
                 <Menu.Item key="8">
                   <Link to="/grocery/coffee-2"> coffee</Link>
                 </Menu.Item>
@@ -81,16 +75,6 @@ const MainSidebar = () => {
                   <Link to="/grocery/soft-drinks"> Soft Drink</Link>
                 </Menu.Item>
               </SubMenu>
-            </SubMenu>
-            <SubMenu
-              key="sub3"
-              icon={<NotificationOutlined />}
-              title="subnav 3"
-            >
-              <Menu.Item key="12">option9</Menu.Item>
-              <Menu.Item key="13">option10</Menu.Item>
-              <Menu.Item key="14">option11</Menu.Item>
-              <Menu.Item key="15">option12</Menu.Item>
             </SubMenu>
           </Menu>
         </Sider>

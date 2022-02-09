@@ -1,19 +1,16 @@
 import useAuth from "hooks/useAuth";
-import React, { useState } from "react";
+import React from "react";
 import { Form, FormControl, Nav, Navbar } from "react-bootstrap";
 import { GrHelp } from "react-icons/gr";
 import { Link } from "react-router-dom";
 
-const content = { en: { help: "Help" }, bn: { help: "সাহায্য" } };
-
 const TopNavBar = () => {
   const { user, logOut } = useAuth();
   console.log("userFromContex", user.emailVerified);
-  const [lang, setLang] = useState("en");
 
   return (
     <section className="container-fluid top-main">
-      <div className="ms-5 ps-4   row">
+      <div className=" ms-5 ps-4   row">
         <Navbar expand="lg">
           <Navbar.Brand as={Link} to="/">
             <h5>
@@ -29,17 +26,16 @@ const TopNavBar = () => {
             />
           </Form>
           <Nav className="w-100">
-            <Nav.Link href="#action1" style={{ borderLeft: "1px solid gray" }}>
+            <Nav.Link
+              as={Link}
+              to="/t/help"
+              style={{ borderLeft: "1px solid gray" }}
+            >
               <span>
-                {" "}
-                <GrHelp />{" "}
-                <h6 style={{ display: "inline" }}>{content[lang].help}</h6>
+                <GrHelp /> <h6 style={{ display: "inline" }}>Help</h6>
               </span>
             </Nav.Link>
-            <Nav.Link href="#action2">
-              <button onClick={() => setLang("bn")}>Ban</button>{" "}
-              <button onClick={() => setLang("en")}>Eng</button>
-            </Nav.Link>
+
             {user.emailVerified ? (
               <button className="login-button" onClick={logOut}>
                 Log Out

@@ -2,7 +2,7 @@ import { Card } from "react-bootstrap";
 import {
   AiFillMinusCircle,
   AiOutlineMinus,
-  AiOutlinePlus,
+  AiOutlinePlus
 } from "react-icons/ai";
 import { BsFillPlusCircleFill } from "react-icons/bs";
 import { FaShoppingCart } from "react-icons/fa";
@@ -10,7 +10,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   addToCart,
   removeFromCart,
-  restartCart,
+  restartCart
 } from "redux/actionCreators/cartActions";
 import { IRootState } from "redux/reducers/reducers";
 import { IGroceryItem } from "Types";

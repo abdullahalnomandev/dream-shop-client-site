@@ -1,11 +1,13 @@
 import GroceryShoppingCard from "components/Common/GroceryShoppingCard/GroceryShoppingCard";
-import { MenuItem } from "ManueItem";
+import useAsync from "hooks/useAsync";
 import React from "react";
 import { MdOutlineNavigateNext } from "react-icons/md";
 import { Link } from "react-router-dom";
+import FreshVegetableServices from "services/Food/FreshVegetableServices";
 
 const VegetableCard = () => {
-  console.log(MenuItem?.[0].subItems[0].foodItems);
+  const { data } = useAsync(FreshVegetableServices.getFreshVegetable);
+
   return (
     <section>
       <div className=" ">
@@ -42,7 +44,7 @@ const VegetableCard = () => {
             </h6>
 
             <div className="row">
-              {MenuItem?.[0].subItems[1].foodItems.map((pd) => (
+              {data?.map((pd) => (
                 <GroceryShoppingCard pd={pd} />
               ))}
             </div>
