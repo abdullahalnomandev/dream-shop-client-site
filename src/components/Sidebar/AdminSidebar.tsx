@@ -15,7 +15,7 @@ const AdminSidebar = () => {
         <div style={{background:'#ddd'}}>
             <SubMenu  title="Admin Dashboard" icon={<GrUserAdmin/>}  onTitleClick={() => routeHandler("/admin")} >
               <Menu.Item key="22">
-                <Link to="/">Customers' Order</Link>
+                <Link to="/order">Customers' Order</Link>
               </Menu.Item>
               <Menu.Item key="23">
                 <Link to="/">Winter Collection</Link>

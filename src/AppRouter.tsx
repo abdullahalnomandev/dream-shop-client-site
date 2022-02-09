@@ -14,6 +14,7 @@ const DashboardPages = React.lazy(() => import("pages/DashboardPages"));
 const HelpPage = React.lazy(() => import("pages/HelpPage"));
 const LoginUser = React.lazy(() => import("pages/LoginUser"));
 const Home = React.lazy(() => import("./pages/Home"));
+const Order = React.lazy(() => import("components/AdminDashboard/CustomarsOrder/Order"));
 
 const AppRouter: React.FC = ({ children }) => {
   return (
@@ -40,6 +41,7 @@ const AppRouter: React.FC = ({ children }) => {
                   <Route path="/t/help" element={<HelpPage />}></Route>
                   <Route path="/dashboard/:page" element={<DashboardPages />}></Route>
                   <Route path="/checkout" element={<PrivateRoute> <Checkout /> </PrivateRoute> } ></Route>
+                  <Route path="/order" element={ <Order /> } ></Route>
                 </Routes>
               </div>
             </div>

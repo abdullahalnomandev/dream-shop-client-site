@@ -22,6 +22,10 @@ export const cartReducer = (state: state = initialState,action: cartAction) => {
       return { ...state, cart: remainingCart };
     }
 
+    case ActionType.CLEAR_CART: {
+      return { ...state, cart: []};
+    }
+
     case ActionType.RESTART_FROM_CART: {
       return { ...state };
     }

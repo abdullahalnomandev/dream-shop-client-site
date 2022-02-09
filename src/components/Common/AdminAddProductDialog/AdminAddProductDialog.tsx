@@ -89,7 +89,7 @@ const AdminAddProductDialog = ({handleSubmit}:IProps) => {
 
               <Form.Item
                 name={["name"]}
-                label="Name"
+                label="Product Name"
                 rules={[{ required: true }]}
               >
                 <Input />

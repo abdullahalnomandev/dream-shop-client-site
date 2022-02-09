@@ -3,13 +3,16 @@ import { requests } from "./../httpServices";
 
 class BookingServices {
   getBooking(): Promise<IBooking[]> {
-    return requests.get(`/allBooking`);
+    return requests.get(`/allOrder`);
+  }
+  getOwnBooking(): Promise<IBooking[]> {
+    return requests.get(`/ownOrder`);
   }
   postBooking(body: {}): Promise<IBooking> {
     return requests.post(`/addBooking`, body);
   }
   deleteBooking(id: string): Promise<IBooking> {
-    return requests.delete(`/Booking/${id}`);
+    return requests.delete(`/booking/${id}`);
   }
   patchBooking(id: string): Promise<IBooking> {
     return requests.patch(`/Booking/${id}`);

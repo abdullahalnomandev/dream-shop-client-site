@@ -6,7 +6,6 @@ import { Link } from "react-router-dom";
 
 const TopNavBar = () => {
   const { user, logOut } = useAuth();
-  console.log("userFromContex", user.emailVerified);
 
   return (
     <section className="container-fluid top-main">

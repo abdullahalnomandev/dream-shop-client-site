@@ -28,7 +28,7 @@ const FoodMenu = () => {
       <div className="container-fluid row">
         <h5 className="text-secondary ps-5 mt-5">Food</h5>
         {MenuItem.map((pd) => (
-          <FoodMenuCard pd={pd} />
+          <FoodMenuCard pd={pd} key={pd._id}/>
         ))}
       </div>
     </section>

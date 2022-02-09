@@ -30,9 +30,13 @@ export interface IGroceryItem {
 // }
 
 export interface IBooking {
-  address: string;
-  area: string;
-  email: string;
-  name: string;
-  phone: string;
+  _id:string;
+  address  :string;
+  area:string;
+  email : string;
+  phone:string;
+  userName:string;
+  total: Number;
+  bag:boolean;
+  cart:IGroceryItem[];
 }
