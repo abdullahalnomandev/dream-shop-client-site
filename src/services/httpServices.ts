@@ -1,9 +1,12 @@
 import axios, { AxiosResponse } from "axios";
 
 const instance = axios.create({
-  baseURL: "http://localhost:5000",
+  baseURL: "https://still-forest-16156.herokuapp.com",
+  
   headers: { authorization: `Bearer ${window.localStorage.getItem("token")}` },
 });
+console.log(process.env.REACT_APP_API);
+
 
 const response = (res: AxiosResponse) => res.data;
 export const requests = {
