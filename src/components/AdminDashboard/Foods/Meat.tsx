@@ -1,11 +1,11 @@
-import React from 'react';
+import React from "react";
 
 const Meat = () => {
-    return (
-        <div>
-            <h1>Meet</h1>
-        </div>
-    );
+  return (
+    <div>
+      <h1>Coming Soon..</h1>
+    </div>
+  );
 };
 
 export default Meat;

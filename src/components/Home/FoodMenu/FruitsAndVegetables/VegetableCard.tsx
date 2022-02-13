@@ -1,3 +1,4 @@
+import loader from "assets/images/loader.gif";
 import GroceryShoppingCard from "components/Common/GroceryShoppingCard/GroceryShoppingCard";
 import useAsync from "hooks/useAsync";
 import React from "react";
@@ -44,6 +45,12 @@ const VegetableCard = () => {
             </h6>
 
             <div className="row">
+              {!data?.length && (
+                <div className="text-center">
+                  <img className="img-fluid" src={loader} alt="" />
+                </div>
+              )}
+
               {data?.map((pd) => (
                 <GroceryShoppingCard pd={pd} />
               ))}

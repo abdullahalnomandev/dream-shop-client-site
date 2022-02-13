@@ -1,9 +1,9 @@
+import loader from 'assets/images/loader.gif';
 import useAsync from "hooks/useAsync";
-import React, { useState } from "react";
+import { useState } from "react";
 import { Modal, Table } from "react-bootstrap";
 import BookingServices from "services/Booking/BookingServices";
 import { IGroceryItem } from "Types";
-
 const Order = () => {
   const { data } = useAsync(BookingServices.getBooking);
   console.log("data", data);
@@ -13,19 +13,15 @@ const Order = () => {
   const [cart, setCart] = useState([] as IGroceryItem[]);
   const [beg, setBag] = useState(false);
 
-  console.log("cart", cart);
-  const total = cart.reduce(
-    (total, pd) => total + pd.price * (pd.count || 1),
-    0
-  );
+  const total = cart.reduce( (total, pd) => total + pd.price * (pd.count || 1), 0 );
   const handleButton = (cart:IGroceryItem[],bag:boolean) => {
     handleShow();
     setCart(cart);
     setBag(bag)
   };
-
+  
   const handleDelete =(e:any,id:string)=>{
-
+    //DELETE REQUEST
     BookingServices.deleteBooking(id)
     .then((res)=>{
         if(res){
@@ -33,8 +29,8 @@ const Order = () => {
         }
     })
     e.target.parentNode.parentNode.style.display='none'
-    
   }
+
   return (
     <div className="order_table " style={{ paddingLeft: "100px" }}>
       <h1>CUSTOMER Order</h1>
@@ -53,6 +49,9 @@ const Order = () => {
               </tr>
             </thead>
             <tbody>
+            {
+                !cart?.length && <div className='text-center'><img className='img-fluid' src={loader} alt="" /></div>
+            }
               {cart.map((product) => (
                 <tr key={product._id}>
                   <td>

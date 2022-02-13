@@ -9,7 +9,7 @@ const Register = () => {
   const [form] = Form.useForm();
   const onFinish = (values: any) => {
     console.log("Received values of form: ", values);
-    registerUser(values.email, values.password);
+    registerUser(values.email, values.password, values.name);
   };
 
   return (

@@ -22,32 +22,31 @@ const validateMessages = {
 };
 /* eslint-enable no-template-curly-in-string */
 
-interface IProps{
-  handleSubmit:()=>void
+interface IProps {
+  handleSubmit: () => void;
 }
 
-const AdminAddProductDialog = ({handleSubmit}:IProps) => {
-  const dispatch =useDispatch()
+const AdminAddProductDialog = ({ handleSubmit }: IProps) => {
+  const dispatch = useDispatch();
 
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const [image, setImage] = useState<null | string>(null);
-  const [loader,setLoader]=useState<boolean | null>(null);
+  const [loader, setLoader] = useState<boolean | null>(null);
 
-  console.log('show',loader);
-  
+  console.log("show", loader);
+
   const handleUploadImage = (e: any) => {
-    
-    setLoader(true)
+    setLoader(true);
     console.log(e.target.files);
     const formData = new FormData();
-    formData.append('file', e.target.files[0]);
+    formData.append("file", e.target.files[0]);
     formData.append("upload_preset", "grocery");
     axios
       .post(`https://api.cloudinary.com/v1_1/dzghsspe7/image/upload`, formData)
-      .then((res) =>{
-        setImage(res.data.url)
-        setLoader(false)
+      .then((res) => {
+        setImage(res.data.url);
+        setLoader(false);
       });
   };
 
@@ -55,23 +54,19 @@ const AdminAddProductDialog = ({handleSubmit}:IProps) => {
     console.log(values);
     const count = 1;
     const groceryItem = { ...values, image, count };
-    dispatch(addToGrocery(groceryItem))
+    dispatch(addToGrocery(groceryItem));
     setShow(false);
-    handleSubmit()
-  
-
+    handleSubmit();
   };
   return (
     <>
       <div className="text-center pb-5">
-        <Button onClick={()=>setShow(true)} >Add Grocery</Button>
+        <Button onClick={() => setShow(true)}>Add Grocery</Button>
 
         <Modal show={show} onHide={handleClose}>
           <Modal.Header closeButton>
             <Modal.Title>Modal heading</Modal.Title>
-            {
-              loader && <Spinner animation="border" />
-            }
+            {loader && <Spinner animation="border" />}
           </Modal.Header>
           <Modal.Body style={{ width: "75%" }}>
             <Form

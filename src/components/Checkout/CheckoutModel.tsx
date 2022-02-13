@@ -35,7 +35,6 @@ const validateMessages = {
   },
 };
 const CheckoutModel: React.FC<IProps> = ({
-  
   switchChecked,
   setIsDisable,
   isDisable,
@@ -44,9 +43,7 @@ const CheckoutModel: React.FC<IProps> = ({
 }) => {
   const { cart } = useSelector((state: IRootState) => state.carts);
   console.log("switchChecked", switchChecked);
-
   const { user } = useAuth();
-
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -61,15 +58,12 @@ const CheckoutModel: React.FC<IProps> = ({
     setBook(values)
     setShow(false);
     setIsDisable(true);
-
-    
   };
 useEffect(()=>{
 if(handlePostBook){
   const newBook ={...book}
       newBook.bag=switchChecked
       console.log("",newBook);
-      
 
   BookingServices.postBooking(newBook).then((res) => {
     if (res) {
@@ -82,7 +76,6 @@ if(handlePostBook){
 },[handlePostBook])
   return (
     <div>
-     
       <Button
         style={{ width: "100%" }}
         onClick={handleShow}
@@ -90,7 +83,6 @@ if(handlePostBook){
       >
         <VscAdd /> Add Address
       </Button>
-
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>Add Address</Modal.Title>
@@ -138,6 +130,7 @@ if(handlePostBook){
                 name={["email"]}
                 label="Email"
                 rules={[{ required: true, type: "email" }]}
+                initialValue={user.email}
               >
                 <Input />
               </Form.Item>

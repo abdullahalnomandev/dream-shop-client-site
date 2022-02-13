@@ -33,7 +33,6 @@ const ShoppingCartSidebar = () => {
         </div>
         <div className="price-item">
           <h6>
-            {" "}
             <span className="text-black"> ৳ </span> {totalPrice}{" "}
           </h6>
         </div>

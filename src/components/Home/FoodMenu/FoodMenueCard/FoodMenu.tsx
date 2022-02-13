@@ -12,12 +12,12 @@ const FoodMenu = () => {
         <div className="row container-fluid ">
           <div className="col-md-12 text-center">
             <div className="col-md-12">
-              <Link to="/dhamaka">
+              <Link to="/fruits-vegetables">
                 <img className="img-fluid" src={mpimage} alt="" />
               </Link>
             </div>
             <div className="col-md-12">
-              <Link to="/popular">
+              <Link to="/fruits-vegetables">
                 <img className="img-fluid" src={mpimage1} alt="" />
               </Link>
             </div>
@@ -28,7 +28,7 @@ const FoodMenu = () => {
       <div className="container-fluid row">
         <h5 className="text-secondary ps-5 mt-5">Food</h5>
         {MenuItem.map((pd) => (
-          <FoodMenuCard pd={pd} key={pd._id}/>
+          <FoodMenuCard pd={pd} key={pd._id} />
         ))}
       </div>
     </section>

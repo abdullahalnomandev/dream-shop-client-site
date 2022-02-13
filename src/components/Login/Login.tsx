@@ -22,7 +22,7 @@ const Login = () => {
   }, []);
   return (
     <div className="container">
-      <div className="w-50 mt-5 m-auto ">
+      <div className="w-50 mt-5 mt-md-5 m-md-auto ">
         <div className="form-section">
           <Form
             form={form}

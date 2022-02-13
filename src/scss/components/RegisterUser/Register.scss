@@ -3,9 +3,11 @@
   margin: auto;
   @media screen and (max-width: 650px) {
     max-width: 350px;
-    margin-left: 100px;
+    margin-left: 0px;
   }
 }
+
+
 .ant-modal-footer {
   display: none;
 }

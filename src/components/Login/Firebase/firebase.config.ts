@@ -7,18 +7,4 @@ const firebaseConfig = {
   appId: process.env.REACT_APP_APPID,
 };
 
-// console.log(
-//   process.env.REACT_APP_APPID,
-//   process.env.REACT_APP_MESSAGING_SENDER_ID
-// );
-
-// const firebaseConfig = {
-//   apiKey: "AIzaSyDidOi2Mrw9vlGsMJvKEDZaAfnnWRwaOQ8",
-//   authDomain: "dream-shop-d7e59.firebaseapp.com",
-//   projectId: "dream-shop-d7e59",
-//   storageBucket: "dream-shop-d7e59.appspot.com",
-//   messagingSenderId: "530712534652",
-//   appId: "1:530712534652:web:fa7a0ba9728fcd3f40f3f9",
-// };
-
 export default firebaseConfig;

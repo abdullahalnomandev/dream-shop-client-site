@@ -1,11 +1,11 @@
-import React from 'react';
+import React from "react";
 
 const Tea = () => {
-    return (
-        <div>
-            <h1>Tea</h1>
-        </div>
-    );
+  return (
+    <div>
+      <h1>Tea Coming soon..</h1>
+    </div>
+  );
 };
 
 export default Tea;

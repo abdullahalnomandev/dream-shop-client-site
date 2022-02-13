@@ -27,7 +27,6 @@ const ShoppingCart = ({ pd }: IProps) => {
   }, [quantity]);
 
   const dispatch = useDispatch();
-
   return (
     <section className="grocery-section">
       <div className="groceryItem d-flex justify-content-start align-items-end">

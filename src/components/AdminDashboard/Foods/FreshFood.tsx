@@ -7,36 +7,23 @@ import { IRootState } from "redux/reducers/reducers";
 import FreshFoodServices from "services/Food/FreshFoodServices";
 
 const FreshFood = () => {
-  // const dispatch = useDispatch();
   const { grocery } = useSelector((state: IRootState) => state.grocery);
   const { data } = useAsync(FreshFoodServices.getFreshFood);
 
   const groceryItem = grocery[0];
-  console.log("groceryItem", groceryItem);
-
-
-  
-
   const handleSubmit = () => {
-    
     if (groceryItem) {
       FreshFoodServices.postFreshFood(groceryItem).then((res) => {
         if (res) {
           alert("Grocery Added successful.");
-          // dispatch(clearGrocery());
         }
-      
       });
     }
-   
   };
 
-  useEffect(()=>{
-    handleSubmit()
-  },[groceryItem])
-
-
-
+  useEffect(() => {
+    handleSubmit();
+  }, [groceryItem]);
 
   return (
     <div className="container">

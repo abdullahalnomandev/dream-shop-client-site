@@ -1,8 +1,8 @@
 import initializeFirebase from "components/Login/Firebase/firebase.init";
 import {
   createUserWithEmailAndPassword,
-  FacebookAuthProvider,
   getAuth,
+  getIdToken,
   GoogleAuthProvider,
   onAuthStateChanged,
   sendEmailVerification,
@@ -10,19 +10,23 @@ import {
   signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
+  updateProfile
 } from "firebase/auth";
 import { useEffect, useState } from "react";
+import AdminServices from "services/Admin/AdminServices";
+import UserServices from "services/Users/UserServices";
 
 // initializeFirebase
 initializeFirebase();
 
 const useFirebase = () => {
   const googleProvider = new GoogleAuthProvider();
-  const facebookProvider = new FacebookAuthProvider();
 
   const [user, setUser] = useState({});
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [admin, setAdmin] = useState(false);
+  const [token, setToken] = useState("");
 
   const auth = getAuth();
 
@@ -32,33 +36,27 @@ const useFirebase = () => {
     signInWithPopup(auth, googleProvider)
       .then((result) => {
         const user = result.user;
-        console.log(user);
+        const { displayName, email } = user;
+        // PUT REQUEST
+        UserServices.updateUser({ name: displayName, email: email });
+        console.log({ name: displayName, email: email });
       })
       .catch((error) => {});
   };
-  //Facebook sign In
-
-  const facebookSignIn = () => {
-    signInWithPopup(auth, facebookProvider)
-      .then((result) => {
-        const user = result.user;
-        console.log(user);
-      })
-      .catch((error) => {
-        const errorMessage = error.message;
-        setError(errorMessage);
-      });
-  };
 
   //CREATE USER
-  const registerUser = (email: string, password: string) => {
+  const registerUser = (email: string, password: string, name: string) => {
     setIsLoading(true);
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         const user = userCredential.user;
         handleEmailVerifyCation(auth);
-        setError(null);
+        updateUserProfile(auth, name);
         console.log(user);
+        
+        //POST REQUEST
+        UserServices.postUser({ name, email });
+        setError(null);
       })
       .catch((error) => {
         const errorMessage = error.message.slice(22);
@@ -66,6 +64,22 @@ const useFirebase = () => {
       })
       .finally(() => setIsLoading(false));
   };
+
+  //UPDATE USER
+
+  const updateUserProfile = (auth: any, name: string) => {
+    updateProfile(auth.currentUser, {
+      displayName: name,
+    })
+      .then(() => {
+        console.log("successfully updated name");
+      })
+      .catch((error) => {
+        // An error occurred
+        // ...
+      });
+  };
+
   //Email EmailVerifyCation
   const handleEmailVerifyCation = (auth: any) => {
     sendEmailVerification(auth.currentUser).then(() => {
@@ -110,6 +124,11 @@ const useFirebase = () => {
         // const uid = user.uid;
         setError(null);
         setUser(user);
+        getIdToken(user).then((idToken) => {
+          console.log(idToken);
+          setToken(idToken);
+          window.localStorage.setItem("token", idToken);
+        });
       } else {
         setUser({});
       }
@@ -117,6 +136,13 @@ const useFirebase = () => {
     });
     return () => unsubscribe();
   }, [auth]);
+
+  useEffect(() => {
+    const { email }: any = user;
+    AdminServices.checkAdmin(email).then((res: any) => {
+      setAdmin(res.admin);
+    });
+  }, [user]);
 
   const logOut = () => {
     signOut(auth)
@@ -131,6 +157,8 @@ const useFirebase = () => {
   };
 
   return {
+    token,
+    admin,
     user,
     registerUser,
     loginUser,
@@ -138,7 +166,6 @@ const useFirebase = () => {
     isLoading,
     error,
     googleSignIn,
-    facebookSignIn,
     resetPassword,
   };
 };

@@ -1,15 +1,16 @@
 import useFirebase from "hooks/useFirebase";
 import React, { createContext } from "react";
 interface IProps {
+  token: string;
   error: string | null;
   googleSignIn: any;
-  facebookSignIn: any;
   user: any;
   resetPassword: (email: string) => void;
-  registerUser: (email: string, password: string) => void;
+  registerUser: (email: string, password: string, name: string) => void;
   loginUser: (email: string, password: string) => void;
   logOut: () => void;
   isLoading: boolean;
+  admin: boolean;
 }
 
 export const AuthContext = createContext({} as IProps);

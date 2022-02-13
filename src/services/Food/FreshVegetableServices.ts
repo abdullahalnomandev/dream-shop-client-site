@@ -13,9 +13,7 @@ class FreshVegetableServices {
   deleteFreshVegetable(id: string): Promise<IGroceryItem> {
     return requests.delete(`/fresh_vegetables/${id}`);
   }
-  patchFreshVegetable(id: string): Promise<IGroceryItem> {
-    return requests.patch(`/fresh_vegetables/${id}`);
-  }
+ 
 }
 
 export default new FreshVegetableServices();

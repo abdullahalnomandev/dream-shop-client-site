@@ -29,7 +29,10 @@ const FruitsAndVegetableMenue = () => {
 
           <div className="row">
             {MenuItem?.[0].subItems?.map((pd) => (
-              <div className="col-lg-3 col-md-4 col-sm-6 text-center" key={pd._id}>
+              <div
+                className="col-lg-3 col-md-4 col-sm-6 text-center"
+                key={pd._id}
+              >
                 <Link to={`/grocery${pd.path}`}>
                   <img className="img-fluid w-75" src={pd.image} alt="" />
                   <p>

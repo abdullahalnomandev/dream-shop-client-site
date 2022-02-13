@@ -1,11 +1,11 @@
-import React from 'react';
+import React from "react";
 
 const Juice = () => {
-    return (
-        <div>
-            <h1>Juice</h1>
-        </div>
-    );
+  return (
+    <div>
+      <h1>Juice Coming soon..</h1>
+    </div>
+  );
 };
 
 export default Juice;

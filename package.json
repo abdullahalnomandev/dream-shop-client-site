@@ -6,11 +6,13 @@
     "@ant-design/icons": "^4.7.0",
     "@cloudinary/react": "^1.0.1",
     "@cloudinary/url-gen": "^1.5.1",
+    "@react-pdf/renderer": "^2.1.1",
     "@testing-library/jest-dom": "^5.16.1",
     "@testing-library/react": "^12.1.2",
     "@testing-library/user-event": "^13.5.0",
     "@trendmicro/react-sidenav": "^0.5.0",
     "@types/jest": "^27.4.0",
+    "@types/jspdf": "^2.0.0",
     "@types/node": "^16.11.20",
     "@types/react": "^17.0.38",
     "@types/react-dom": "^17.0.11",
@@ -21,6 +23,8 @@
     "dot-env": "^0.0.1",
     "dotenv": "^14.3.2",
     "firebase": "^9.6.4",
+    "jspdf": "^2.5.1",
+    "jspdf-autotable": "^3.5.23",
     "mdbreact": "^5.2.0",
     "node-sass": "^7.0.1",
     "pinch-zoom-pan": "^3.0.0",
@@ -37,6 +41,7 @@
     "react-router-dom": "^6.2.1",
     "react-scripts": "5.0.0",
     "react-switch": "^6.0.0",
+    "react-to-print": "^2.14.4",
     "react-zoom-pan-pinch-scroll": "^1.0.1",
     "redux": "^4.1.2",
     "redux-devtools-extension": "^2.13.9",
@@ -68,7 +73,11 @@
       "last 1 safari version"
     ]
   },
+
   "devDependencies": {
-    "@types/styled-components": "^5.1.20"
+    "@types/styled-components": "^5.1.20",
+    "@typescript-eslint/eslint-plugin": "^4.6.0",
+    "@typescript-eslint/parser": "^4.6.0"
   }
+  
 }
