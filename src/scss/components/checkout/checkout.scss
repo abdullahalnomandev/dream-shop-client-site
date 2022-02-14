@@ -1,7 +1,6 @@
 .checkout {
   .add_address_item,
   .raver_bag {
-    margin-right: 35%;
 
     .delivery_address {
       border-bottom: 1px solid rgb(100, 96, 96);
@@ -31,6 +30,15 @@
   .raver_bag {
     border: 1px solid #d6cdcd;
   }
+  @media screen and (max-width: 750px) {
+    .amount,
+    .process_checkout  {
+      margin-right: 35%;
+    }
+    .top-image{
+      margin-left: 30px;
+    }
+  }
   .amount,
   .process_checkout {
 
@@ -39,10 +47,16 @@
       border: none;
    
     }
-    margin-right: 35%;
-    margin-left: 10%;
-    border-radius: 5px;
 
+    border-radius: 5px;
+    
+    @media screen and (max-width: 800px) {
+      .raver_bag,.add_address_item  {
+        margin-right: 35%;
+        margin-left: 10%;
+      }
+ 
+    }
     .process {
       background: #ff686e;
       box-shadow: 10px 10px 10px gray;

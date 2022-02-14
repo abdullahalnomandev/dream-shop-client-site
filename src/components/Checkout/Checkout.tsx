@@ -39,7 +39,7 @@ const Checkout = () => {
   return (
     <div className="container">
       {!cart.length && (
-        <div className="ms-5 px-5">
+        <div className="ms-md-5 px-md-5">
           <div className="col-md-6 row ">
             <div className="col-md-12 ">
               <h5>
@@ -80,7 +80,7 @@ const Checkout = () => {
               />
             </div>
           </div>
-          <div className="raver_bag py-3 px-2 d-flex justify-content-between">
+          <div className="raver_bag py-3 d-flex justify-content-between">
             <div>
               <RiShoppingBag2Fill />{" "}
               <span className="text-primary ">
@@ -97,7 +97,7 @@ const Checkout = () => {
               <Switch defaultChecked onChange={onChange} />
             </div>
           </div>
-          <div className="amount d-flex justify-content-between text-secondary">
+          <div className="amount d-flex justify-content-between text-secondary" style={{marginLeft:'10%'}}>
             <p>Payment options available on the next page</p>
             <p>৳9 Delivery charge included</p>
           </div>

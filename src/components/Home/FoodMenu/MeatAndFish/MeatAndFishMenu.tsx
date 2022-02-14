@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 
 const MeatAndFishMenu = () => {
   return (
-    <div className="ms-5 ps-4 ">
+    <div className="ms-md-5 ps-md-4 ">
       <div className="container-fluid">
         <div className="top-image text-center d-flex justify-content-center align-items-center ">
           <Link to="/grocery/meat">

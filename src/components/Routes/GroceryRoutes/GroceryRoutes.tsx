@@ -14,7 +14,7 @@ const GroceryRoutes = () => {
   const { panel } = useParams();
 
   return (
-    <div className="ms-5 ps-4">
+    <div className="ms-md-5 ps-md-4">
       {panel === "fresh-fruit" ? (
         <FruitsCard />
       ) : panel === "fresh-vegetable" ? (

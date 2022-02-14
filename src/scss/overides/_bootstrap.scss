@@ -10,7 +10,7 @@ $theme-colors: (
   position: fixed;
 }
 .offcanvas.offcanvas-end.show {
-  width: 30%;
+  width: 32%;
   margin-top: 4.4%;
   border-top: 1px solid #dddd;
 }
@@ -24,11 +24,9 @@ $theme-colors: (
   border: none;
 }
 
-
-
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 910px) {
   .offcanvas.offcanvas-end.show{
-    width: 70%;
+    width:85%;
 
   }
 }

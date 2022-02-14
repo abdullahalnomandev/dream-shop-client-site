@@ -2,11 +2,8 @@ import axios, { AxiosResponse } from "axios";
 
 const instance = axios.create({
   baseURL:process.env.REACT_APP_API,
-  
   headers: { authorization: `Bearer ${window.localStorage.getItem("token")}` },
 });
-
-
 
 const response = (res: AxiosResponse) => res.data;
 export const requests = {

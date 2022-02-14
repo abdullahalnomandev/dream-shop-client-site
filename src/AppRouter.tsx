@@ -33,7 +33,7 @@ const AppRouter: React.FC = ({ children }) => {
               <div className="col-md-1">
                 <MainSidebar  />
               </div>
-              <div className="col-md-11 px-5">
+              <div className="col-md-11 ">
                 <ShoppingCartSidebar />
                 <Routes>
                   <Route path="/" element={<Home />}></Route>

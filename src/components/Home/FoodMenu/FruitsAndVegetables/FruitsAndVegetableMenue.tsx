@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 const FruitsAndVegetableMenue = () => {
   return (
-    <div className="ms-5 ps-4 ">
+    <div className="ms-md-5 ps-md-4 ">
       <div className="container-fluid">
         <div className="top-image text-center">
           <img

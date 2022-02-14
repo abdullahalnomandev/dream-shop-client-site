@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const Profile = () => {
   const { user, logOut } = useAuth();
   return (
-    <div className="ms-5 text-center">
+    <div className="ms-md-5 text-center">
       <div
         className="profile text-center w-75 m-auto  mt-5 p-4 pt-4"
         style={{ border: "1px solid #ddd" }}

@@ -22,7 +22,7 @@ const CustomorOder = () => {
     e.target.parentNode.parentNode.style.display = "none";
   };
   return (
-    <div className="ms-md-5 ps-md-3">
+    <div className="ms-md-5 ps-md-3 w-100">
       <Table striped bordered hover>
         <thead>
           <tr>
