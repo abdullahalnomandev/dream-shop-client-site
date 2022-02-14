@@ -1,11 +1,11 @@
 import axios, { AxiosResponse } from "axios";
 
 const instance = axios.create({
-  baseURL: "https://still-forest-16156.herokuapp.com",
+  baseURL:process.env.REACT_APP_API,
   
   headers: { authorization: `Bearer ${window.localStorage.getItem("token")}` },
 });
-console.log(process.env.REACT_APP_API);
+
 
 
 const response = (res: AxiosResponse) => res.data;
